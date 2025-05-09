@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); // Only keep mongoose if used below
 
 const MessageSchema = new mongoose.Schema({
     name: {

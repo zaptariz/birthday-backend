@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Message = require('../models/Message');
+const Message = require('../models/Message'); // Only keep Message if used below
 
 // Get all messages
 router.get('/', async (req, res) => {
