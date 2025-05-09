@@ -21,6 +21,13 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/vini-bday
 
 // Routes
 app.use('/api/messages', require('./routes/messages'));
+app.get('*', (req, res) => {
+    res.status(401).send(`
+      <h1>Welcome to Vinitha's Birthday API 🎉</h1>
+      <p>If you are seeing this, you are trying to access a protected or unknown route.<br>
+      Please use the official app to view the dashboard or wishes.</p>
+    `);
+  });
 
 const PORT = process.env.PORT || 5000;
 const HOST = '0.0.0.0'; // Listen on all network interfaces
