@@ -8,9 +8,9 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: '*', credentials: true }));
 app.use(express.json());
-
+https://e6fb-2401-4900-6336-b31e-c1f8-f338-6bfe-9fdd
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/vini-bday', {
     useNewUrlParser: true,
