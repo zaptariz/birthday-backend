@@ -8,7 +8,7 @@ const MessageSchema = new mongoose.Schema({
     relationship: {
         type: String,
         required: true,
-        enum: ['Family', 'Friend', 'Sister', 'Brother', 'Best Friend', 'Colleague', 'Other']
+        enum: ['Family', 'Friend', 'Sister', 'Brother', 'Best Friend', 'Colleague', 'Other', 'Cousin', 'Mama']
     },
     message: {
         type: String,
@@ -18,6 +18,7 @@ const MessageSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    ip: { type: String, required: true },
     timeOfDay: {
         type: String,
         default: function() {

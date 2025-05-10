@@ -14,10 +14,19 @@ router.get('/', async (req, res) => {
 
 // Add a new message
 router.post('/', async (req, res) => {
+    // Get IP address (supports proxies)
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    // Check for existing message from this IP
+    const existing = await Message.findOne({ ip });
+    if (existing) {
+        return res.status(409).json({ message: 'You have already submitted a wish.' });
+    }
+
     const message = new Message({
         name: req.body.name,
         relationship: req.body.relationship,
-        message: req.body.message
+        message: req.body.message,
+        ip: ip
     });
 
     try {
